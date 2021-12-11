@@ -15,6 +15,8 @@
 var startButton = document.querySelector("#start-btn");
 var openingContainer = document.querySelector(".opening-container");
 var questionContainer = document.querySelector(".question-container");
+var questionDiv = document.querySelector("#question");
+var answerButtons = document.querySelector("#answer-btn");
 
 // Other variables
 var mixQuestions;
@@ -38,13 +40,24 @@ function startGame() {
 
 function selectNextQuestion() {
     displayQuestion(mixQuestions[questionIndex]);
-}
-
-function displayQuestion(question) {
     
 }
 
-function selectAnswer() {
+function displayQuestion(question) {
+    questionDiv.innerText = question.question;
+    question.answers.forEach(element => {
+        var newAnswerButtons = document.createElement("button");
+        newAnswerButtons.innerText = element.text;
+        newAnswerButtons.classList.add("btn");
+        if (element.correct) {
+            newAnswerButtons.dataset.correct = element.correct;
+        }
+        newAnswerButtons.addEventListener("click", chooseAnswer)
+        answerButtons.appendChild(newAnswerButtons);
+    });
+}
+
+function chooseAnswer() {
 
 }
 
