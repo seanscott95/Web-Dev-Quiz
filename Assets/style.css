@@ -1,18 +1,49 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
 .top-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-}
-
-.contents-in-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 70%;
+    
 }
 
 .main-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.contents-main-container {
+    display: grid;
+    grid-template-columns: auto;
+    width: 70%;
+    
+}
+
+.btn-div {
+    display: grid;
+    grid-template-columns: 1;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.btn {
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: whitesmoke;
+    height: fit-content;
+    width: fit-content;
+}
+
+.btn:hover {
+    border: 2px solid black;
+}
+
+.hide {
+    display: none;
 }
