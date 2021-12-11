@@ -10,24 +10,52 @@
 // show highscores if high enough time left
 // have play again button
 
+
+// Linking buttons and containers to variables to use in js
 var startButton = document.querySelector("#start-btn");
 var openingContainer = document.querySelector(".opening-container");
 var questionContainer = document.querySelector(".question-container");
 
-startButton.addEventListener("click", startGame);
+// Other variables
+var mixQuestions;
+var questionIndex;
 
+
+
+// Event listeners
+startButton.addEventListener("click", startGame);
 
 
 function startGame() {
     openingContainer.classList.add("hide");
+    mixQuestions = questionsArray.sort(() => Math.random() -.5);
+    questionIndex = 0
     questionContainer.classList.remove("hide");
+    selectNextQuestion();
+
 
 }
 
 function selectNextQuestion() {
+    displayQuestion(mixQuestions[questionIndex]);
+}
 
+function displayQuestion(question) {
+    
 }
 
 function selectAnswer() {
 
 }
+
+var questionsArray = [
+    {
+        question: "What colour is the sky?:",
+        answers: [
+            {text: "Blue", correct: true},
+            {text: "Orange", correct: false},
+            {text: "Purple", correct: false},
+            {text: "Yellow", correct: false}
+        ]
+    }
+]
