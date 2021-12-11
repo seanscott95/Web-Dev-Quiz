@@ -43,34 +43,33 @@ function startGame() {
 function selectNextQuestion() {
     refreshAnswers();
     displayQuestion(mixQuestions[questionIndex]);
-    
 }
 
 function refreshAnswers() {
     while(answerButtons.firstChild) {
-        answerButtons.removeChild
-        (answerButtons.firstChild)
+        answerButtons.removeChild(answerButtons.firstChild)
     }
 }
 
 function displayQuestion(question) {
     questionDiv.innerText = question.question;
-    question.answers.forEach(element => {
+    question.answers.forEach(choice => {
         var newAnswerButtons = document.createElement("button");
-        newAnswerButtons.innerText = element.text;
+        newAnswerButtons.innerText = choice.text;
         newAnswerButtons.classList.add("btn");
-        if (element.correct) {
-            newAnswerButtons.dataset.correct = element.correct;
+        if (choice.correct) {
+            newAnswerButtons.dataset.correct = choice.correct;
         }
         newAnswerButtons.addEventListener("click", chooseAnswer)
         answerButtons.appendChild(newAnswerButtons);
+        
     });
 }
 
-function chooseAnswer(element) {
-    var answerButtonChosen = element.target
-    var correct = answerButtonChosen.dataset.correct
-    showAnswerComment(element, correct)
+function chooseAnswer(event) {
+    var answerButtonClicked = event.target
+    var correct = answerButtonClicked.dataset.correct
+    showAnswerComment(element, correct) //*******
     Array.from(answerButtons.children).forEach(button => {
         showAnswerComment(button, button.dataset.correct)
     })
