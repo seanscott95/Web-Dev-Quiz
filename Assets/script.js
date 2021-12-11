@@ -11,13 +11,17 @@
 // have play again button
 
 var startButton = document.querySelector("#start-btn");
+var openingContainer = document.querySelector(".opening-container");
+var questionContainer = document.querySelector(".question-container");
 
 startButton.addEventListener("click", startGame);
 
 
 
 function startGame() {
-    console.log("STarted")
+    openingContainer.classList.add("hide");
+    questionContainer.classList.remove("hide");
+
 }
 
 function selectNextQuestion() {
