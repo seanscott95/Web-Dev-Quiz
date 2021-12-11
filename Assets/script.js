@@ -39,8 +39,17 @@ function startGame() {
 }
 
 function selectNextQuestion() {
+    refreshAnswers();
     displayQuestion(mixQuestions[questionIndex]);
     
+}
+
+function refreshAnswers() {
+    while(answerButtons.firstChild) {
+        answerButtons.removeChild
+        (answerButtons.firstChild)
+    }
+
 }
 
 function displayQuestion(question) {
