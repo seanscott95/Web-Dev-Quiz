@@ -19,6 +19,7 @@ var questionDiv = document.querySelector("#question");
 var answerButtons = document.querySelector("#answer-btn");
 var displayCorrect = document.querySelector(".display-correct");
 var displayWrong = document.querySelector(".display-wrong");
+var displayCorrectWrong = document.querySelector("#display-correct-wrong");
 
 // Other variables
 var mixQuestions;
@@ -33,7 +34,7 @@ startButton.addEventListener("click", startGame);
 function startGame() {
     openingContainer.classList.add("hide");
     mixQuestions = questionsArray.sort(() => Math.random() -.5);
-    questionIndex = 0
+    questionIndex = 0;
     questionContainer.classList.remove("hide");
     selectNextQuestion();
 
@@ -53,23 +54,25 @@ function refreshAnswers() {
 
 function displayQuestion(question) {
     questionDiv.innerText = question.question;
-    question.answers.forEach(choice => {
-        var newAnswerButtons = document.createElement("button");
-        newAnswerButtons.innerText = choice.text;
+    question.answers.forEach(answer => {
+        const newAnswerButtons = document.createElement("button");
+        newAnswerButtons.innerText = answer.text;
         newAnswerButtons.classList.add("btn");
-        if (choice.correct) {
-            newAnswerButtons.dataset.correct = choice.correct;
+        if (answer.correct) {
+            newAnswerButtons.dataset.correct = answer.correct;
         }
-        newAnswerButtons.addEventListener("click", chooseAnswer)
+        newAnswerButtons.addEventListener("click", () => {
+            questionIndex++;
+            clickedAnswer();
+        })
         answerButtons.appendChild(newAnswerButtons);
-        
     });
 }
 
-function chooseAnswer(event) {
-    var answerButtonClicked = event.target
-    var correct = answerButtonClicked.dataset.correct
-    showAnswerComment(element, correct) //*******
+function clickedAnswer(event) {
+    var answerButtonClicked = event.target //First error .target, undefined?, wrong type?
+    const correct = answerButtonClicked.dataset.correct // Second error undefined  reading dataset, 
+    showAnswerComment(displayCorrectWrong, correct) 
     Array.from(answerButtons.children).forEach(button => {
         showAnswerComment(button, button.dataset.correct)
     })
@@ -94,6 +97,9 @@ function removeAnswerComment () {
         displayWrong.classList.add("hide")
     }
 }
+
+
+
 
 
 
@@ -154,3 +160,54 @@ var questionsArray = [
 //         element.classList.remove("display-wrong")
 //     }
 // }
+
+
+
+// function chooseAnswer(event) {
+//     var answerButtonClicked = event.target
+//     var correct = answerButtonClicked.dataset.correct
+//     showAnswerComment(displayCorrect, correct) //******* 2229
+//     Array.from(answerButtons.children).forEach(button => {
+//         showAnswerComment(button, button.dataset.correct)
+//     })
+//     if (mixQuestions.length > questionIndex.length +1) {
+//         selectNextQuestion();
+//     }
+// }
+// 
+// function showAnswerComment(element, correct) {
+//     removeAnswerComment(element)
+//     if (correct) {
+//         displayCorrect.classList.remove("hide")
+//     } else {
+//         displayWrong.classList.remove("hide")
+//     }
+// }
+// 
+// function removeAnswerComment () {
+//     if (correct) {
+//         displayCorrect.classList.add("hide")
+//     } else {
+//         displayWrong.classList.add("hide")
+//     }
+// }
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
