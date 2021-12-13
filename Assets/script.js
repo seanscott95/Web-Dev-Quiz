@@ -16,10 +16,9 @@ var startButton = document.querySelector("#start-btn");
 var openingContainer = document.querySelector(".opening-container");
 var questionContainer = document.querySelector(".question-container");
 var questionDiv = document.querySelector("#question");
-var answerButtons = document.querySelector("#answer-btn");
+var answerButtons = document.querySelector("#answer-btns");
 var displayCorrect = document.querySelector(".display-correct");
 var displayWrong = document.querySelector(".display-wrong");
-var displayCorrectWrong = document.querySelector("#display-correct-wrong");
 
 // Other variables
 var mixQuestions;
@@ -52,30 +51,35 @@ function refreshAnswers() {
     }
 }
 
-function displayQuestion(question) {
-    questionDiv.innerText = question.question;
-    question.answers.forEach(answer => {
-        const newAnswerButtons = document.createElement("button");
-        newAnswerButtons.innerText = answer.text;
+function displayQuestion(x) {
+    questionDiv.innerText = x.question;
+    x.answers.forEach(answers => {
+        var newAnswerButtons = document.createElement("button");
+        newAnswerButtons.innerText = answers.text;
         newAnswerButtons.classList.add("btn");
-        if (answer.correct) {
-            newAnswerButtons.dataset.correct = answer.correct;
+        if (answers.correct) {
+            newAnswerButtons.setAttribute("answer", "correct")
+        } else {
+            newAnswerButtons.setAttribute("answer", "wrong")
         }
-        newAnswerButtons.addEventListener("click", () => {
+        newAnswerButtons.addEventListener("click", (event) => {
             questionIndex++;
-            clickedAnswer();
+            clickedAnswer(event);
         })
         answerButtons.appendChild(newAnswerButtons);
     });
 }
 
 function clickedAnswer(event) {
-    var answerButtonClicked = event.target //First error .target, undefined?, wrong type?
-    const correct = answerButtonClicked.dataset.correct // Second error undefined  reading dataset, 
-    showAnswerComment(displayCorrectWrong, correct) 
+    var button = event.target;
+    if  (button.matches("button")) {
+        var getAttribute = button.getAttribute("answer")
+        console.log(getAttribute);
+    }
+    
     Array.from(answerButtons.children).forEach(button => {
-        showAnswerComment(button, button.dataset.correct)
-    })
+            showAnswerComment(button, answerAttribute)
+        })
     if (mixQuestions.length > questionIndex.length +1) {
         selectNextQuestion();
     }
@@ -97,11 +101,6 @@ function removeAnswerComment () {
         displayWrong.classList.add("hide")
     }
 }
-
-
-
-
-
 
 var questionsArray = [
     {
@@ -141,6 +140,56 @@ var questionsArray = [
         ]
     }
 ]
+
+
+
+
+// var questionsArray = [
+//     {
+//         question: "What colour is the sky?",
+//         answers: [
+//             {text: "Blue"},
+//             {text: "Orange"},
+//             {text: "Purple"},
+//             {text: "Yellow"}
+//         ]
+//     },
+//     {
+//         question: "What grows on apple trees?",
+//         answers: [
+//             {text: "Mandarins"},
+//             {text: "Pears"},
+//             {text: "Apples"},
+//             {text: "Mushrooms"}
+//         ]
+//     },
+//     {
+//         question: "_________, boil 'em, mash 'em, stick 'em in a stew!",
+//         answers: [
+//             {text: "iPhone's"},
+//             {text: "Eraser's"},
+//             {text: "Metal's"},
+//             {text: "PO-TA-TOES"}
+//         ]
+//     },
+//     {
+//         question: "What is the circumference of the Earth?",
+//         answers: [
+//             {text: "4.739M km", correct: false},
+//             {text: "40,075 km", correct: true},
+//             {text: "21,344 km", correct: false},
+//             {text: "10,921 km", correct: false}
+//         ]
+//     }
+// ]
+
+
+
+
+
+
+
+
 
 
 
@@ -195,7 +244,37 @@ var questionsArray = [
 
 
 
+// function displayQuestion(question) {
+//     questionDiv.innerText = question.question;
+//     question.answers.forEach(answer => {
+//         const newAnswerButtons = document.createElement("button");
+//         newAnswerButtons.innerText = answer.text;
+//         newAnswerButtons.classList.add("btn");
+//         if (answer.correct) {
+//             newAnswerButtons.dataset.correct = answer.correct;
+//         }
+//         newAnswerButtons.addEventListener("click", () => {
+//             questionIndex++;
+//             clickedAnswer();
+//         })
+//         answerButtons.appendChild(newAnswerButtons);
+//     });
+// }
+// 
 
+
+//
+// function clickedAnswer(event) {
+//     var answerButtonClicked = event.target //First error .target, undefined?, wrong type?
+//     const correct = answerButtonClicked. // Second error undefined  reading dataset, 
+//     showAnswerComment(displayCorrectWrong, correct) 
+//     Array.from(answerButtons.children).forEach(button => {
+//         showAnswerComment(button, button.dataset.correct)
+//     })
+//     if (mixQuestions.length > questionIndex.length +1) {
+//         selectNextQuestion();
+//     }
+// }
 
 
 
