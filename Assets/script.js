@@ -11,8 +11,12 @@
 // have play again button
 
 //TODO LIST:
-// Timer goes into neg
-// 
+// fix timer that goes into neg
+// set up last question button to go to score input
+// set up text on score input page for your final score + secondsLeft
+// set up input button to go to highscore page and input score to ol
+// have clear scores button clear scores
+// have go back button to go back to start page
 
 
 // Linking buttons and containers to variables to use in js
