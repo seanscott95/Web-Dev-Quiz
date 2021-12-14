@@ -46,7 +46,7 @@ function selectNextQuestion() {
     displayQuestion(mixQuestions[questionIndex]);
 }
 
-// Removes answer already shown
+// Removes orginal answer buttons
 function refreshAnswers() {
     while(answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild)
@@ -91,7 +91,7 @@ function clickedAnswer(event) {
         }
     }
     if (mixQuestions.length > questionIndex.length +1) {      //is this the problem for not going to next q?
-        selectNextQuestion();                                 // or refreshAnswers() - line 50?
+        selectNextQuestion();                                 // or displayQuestion()?
     }
 }
 
