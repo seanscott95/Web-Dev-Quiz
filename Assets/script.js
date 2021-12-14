@@ -14,7 +14,7 @@
 // fix timer that goes into neg
 // set up last question button to go to score input
 // set up text on score input page for your final score + secondsLeft
-// set up input button to go to highscore page and input score to ol
+// set up input button to go to highscore page and input score to ol that orders higher times above lower ones
 // have clear scores button clear scores
 // have go back button to go back to start page
 
@@ -28,6 +28,11 @@ var answerButtons = document.querySelector("#answer-btns");
 var displayCorrect = document.querySelector(".display-correct");
 var displayWrong = document.querySelector(".display-wrong");
 var timer = document.querySelector(".timer");
+var inputInitials = document.querySelector("#input");
+var submitInitialsButton = document.querySelector(".submit-initials");
+var orderedListItems = document.querySelector(".ol-El");
+var goBackButton = document.querySelector(".go-back");
+var clearHighscoresButton = document.querySelector(".clear-highscores");
 
 // Other variables
 var mixQuestions;
@@ -61,15 +66,15 @@ function refreshAnswers() {
     }
 }
 
-// This adisplays each question and answer to their respective elements - question div and answer buttons
+// Displays each question and answer to their respective elements - question div and answer buttons
 function displayQuestion(x) {
     questionDiv.innerText = x.question;
     x.answers.forEach(answers => {
-        // create new buttons to apply answer text too
+        // Creates new buttons to apply answer text too
         var newAnswerButtons = document.createElement("button");
         newAnswerButtons.innerText = answers.text;
         newAnswerButtons.classList.add("btn");
-        // sets appropiate attribute for correct/wrong answer
+        // Sets appropiate attribute for correct/wrong answer
         if (answers.correct) {
             newAnswerButtons.setAttribute("answer", "correct")
         } else {
@@ -94,7 +99,7 @@ function clickedAnswer(event) {
         } else {
             displayWrong.classList.remove("hide");
             displayCorrect.classList.add("hide");
-            // 10 seconds taken off in answer was wrong
+            // 10 seconds taken off if answer was wrong
             secondsLeft = secondsLeft - 10;
         }
     }
