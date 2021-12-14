@@ -74,34 +74,18 @@ function clickedAnswer(event) {
     var button = event.target;
     if  (button.matches("button")) {
         var getAttribute = button.getAttribute("answer")
-        console.log(getAttribute);
+        if (getAttribute === "correct") {
+            displayCorrect.classList.remove("hide");
+            displayWrong.classList.add("hide");
+        } else {
+            displayWrong.classList.remove("hide");
+            displayCorrect.classList.add("hide");
+        }
     }
-    
-    Array.from(answerButtons.children).forEach(button => {
-            showAnswerComment(button, "answer")
-        })
     if (mixQuestions.length > questionIndex.length +1) {
         selectNextQuestion();
     }
 }
-
-function showAnswerComment(element, correct) {
-    removeAnswerComment(element)
-    if (correct) {
-        displayCorrect.classList.remove("hide")
-    } else {
-        displayWrong.classList.remove("hide")
-    }
-}
-
-function removeAnswerComment (correct) {
-    if (correct) {
-        displayCorrect.classList.add("hide")
-    } else {
-        displayWrong.classList.add("hide")
-    }
-}
-
 var questionsArray = [
     {
         question: "What colour is the sky?",
