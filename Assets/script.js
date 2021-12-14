@@ -10,6 +10,10 @@
 // show highscores if high enough time left
 // have play again button
 
+//TODO LIST:
+// Timer goes into neg
+// 
+
 
 // Linking buttons and containers to variables to use in js
 var startButton = document.querySelector("#start-btn");

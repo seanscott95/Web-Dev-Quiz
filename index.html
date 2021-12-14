@@ -27,11 +27,26 @@
                 <div class="display-wrong hide">Wrong!</div>
             </div>
 
-            <div class="opening-container">
+            <div class="opening-container hide">
                 <h2>Coding Quiz Challenge</h2>
                 <p>Try to answer the following code-related questions within the time limit
                     keep in mind that incorrect answers will penalise your scoretime by ten seconds!</p>
                 <button id="start-btn" class="btn">Start Quiz</button>
+            </div>
+
+            <div class="input-score-container hide">
+                <h2>All done!</h2>
+                <div class="result"></div>
+                <label for="input">Enter Intials:</label>
+                <input type= "text" id="input">
+                <button class="btn">Submit</button>
+            </div>
+
+            <div class="highscore-container hide">
+                <h2>Highscores:</h2>
+                <ol class="olEl"></ol>
+                <button class="highscore-button btn">Go Back</button>
+                <button class="refresh-highscores btn">Clear Highscores</button>
             </div>
         </div>
 
