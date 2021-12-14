@@ -19,10 +19,12 @@ var questionDiv = document.querySelector("#question");
 var answerButtons = document.querySelector("#answer-btns");
 var displayCorrect = document.querySelector(".display-correct");
 var displayWrong = document.querySelector(".display-wrong");
+var timer = document.querySelector(".timer");
 
 // Other variables
 var mixQuestions;
 var questionIndex;
+var secondsLeft = 60;
 
 
 
@@ -31,10 +33,12 @@ startButton.addEventListener("click", startGame);
 
 
 function startGame() {
+    setTime();
     openingContainer.classList.add("hide");
     mixQuestions = questionsArray.sort(() => Math.random() -.5);
     questionIndex = 0;
     questionContainer.classList.remove("hide");
+    
     selectNextQuestion();
 
 
@@ -125,9 +129,23 @@ var questionsArray = [
     }
 ]
 
+// Timer countsdown from 60 seconds
 
+function setTime() {
+    var timerInterval = setInterval(function () {
+        secondsLeft--;
+        timer.textContent = secondsLeft;
+        
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            inputHighscore();
+        }
+    }, 1000);
+}
 
+function inputHighscore() {
 
+}
 // var questionsArray = [
 //     {
 //         question: "What colour is the sky?",
