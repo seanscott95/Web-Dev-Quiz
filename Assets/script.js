@@ -78,7 +78,7 @@ function clickedAnswer(event) {
     }
     
     Array.from(answerButtons.children).forEach(button => {
-            showAnswerComment(button, answerAttribute)
+            showAnswerComment(button, "answer")
         })
     if (mixQuestions.length > questionIndex.length +1) {
         selectNextQuestion();
@@ -94,7 +94,7 @@ function showAnswerComment(element, correct) {
     }
 }
 
-function removeAnswerComment () {
+function removeAnswerComment (correct) {
     if (correct) {
         displayCorrect.classList.add("hide")
     } else {
