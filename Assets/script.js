@@ -84,9 +84,10 @@ function clickedAnswer(event) {
         } else {
             displayWrong.classList.remove("hide");
             displayCorrect.classList.add("hide");
+            secondsLeft = secondsLeft - 10;
         }
     }
-    if (mixQuestions.length > questionIndex.length +1) {
+    if (mixQuestions.length > questionIndex.length +1) {      //is this the problem for not going to next q?
         selectNextQuestion();
     }
 }
@@ -129,7 +130,7 @@ var questionsArray = [
     }
 ]
 
-// Timer countsdown from 60 seconds
+// Timer countdown from 60 seconds
 
 function setTime() {
     var timerInterval = setInterval(function () {
@@ -142,6 +143,7 @@ function setTime() {
         }
     }, 1000);
 }
+
 
 function inputHighscore() {
 
