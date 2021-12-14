@@ -90,10 +90,8 @@ function clickedAnswer(event) {
             secondsLeft = secondsLeft - 10;
         }
     }
-    if (mixQuestions.length > questionIndex.length +1) {      //is this the problem for not going to next q?
-        selectNextQuestion();                                 // or displayQuestion()?
-    }
-}
+    selectNextQuestion();
+};
 
 // Array of different questions to be cycled through
 var questionsArray = [
