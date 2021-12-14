@@ -33,6 +33,9 @@ var submitInitialsButton = document.querySelector(".submit-initials");
 var orderedListItems = document.querySelector(".ol-El");
 var goBackButton = document.querySelector(".go-back");
 var clearHighscoresButton = document.querySelector(".clear-highscores");
+var displayResult = document.querySelector(".result");
+var inputScoreContainer = document.querySelector(".input-score-container");
+var highscoreContainer = document.querySelector(".highscore-container");
 
 // Other variables
 var mixQuestions;
@@ -56,7 +59,7 @@ function startGame() {
 // Selects next question from the question array
 function selectNextQuestion() {
     refreshAnswers();
-    displayQuestion(mixQuestions[questionIndex]);
+    inputHighscore();
 }
 
 // Removes orginal answer buttons
@@ -153,17 +156,83 @@ function setTime() {
         secondsLeft--;
         timer.textContent = secondsLeft;
         
-        if (secondsLeft === 0) {
+        if (secondsLeft === 0) {            // if (secondsLeft === 0 || mixQuestions is out???)
             clearInterval(timerInterval);
             inputHighscore();
         }
     }, 1000);
 }
 
-
+// untested
 function inputHighscore() {
+    if (mixQuestions.length === 0) {
+        questionContainer.classList.add("hide");
+        inputScoreContainer.classList.remove("hide");
+    } else {
+        displayQuestion(mixQuestions[questionIndex]);
+    }
+    displayResult.innerText = "Your score was " + secondsLeft;
 
+    submitInitialsButton.addEventListener("click", () => {
+        var newScore = document.createElement("li");
+        newScore.innerText = initialsInput + " - " + secondsLeft;
+        orderedListItems.appendChild(newScore);
+        inputScoreContainer.classList.add("hide");
+        highscoreContainer.classList.remove("hide");
+    })
 }
+
+// Event listeners for the goback and clear highscores buttons
+
+goBackButton.addEventListener("click", () => {
+    // untested
+    location.reload();
+});
+
+// untested
+clearHighscoresButton.addEventListener("click", () => {
+    while (orderedListItems.firstChild)
+    orderedListItems.removeChild(orderedListItems.firstChild);
+})
+
+// function displayQuestion(x) {
+//     questionDiv.innerText = x.question;
+//     x.answers.forEach(answers => {
+//         // Creates new buttons to apply answer text too
+//         var newAnswerButtons = document.createElement("button");
+//         newAnswerButtons.innerText = answers.text;
+//         newAnswerButtons.classList.add("btn");
+//         // Sets appropiate attribute for correct/wrong answer
+//         if (answers.correct) {
+//             newAnswerButtons.setAttribute("answer", "correct")
+//         } else {
+//             newAnswerButtons.setAttribute("answer", "wrong")
+//         }
+//         newAnswerButtons.addEventListener("click", (event) => {
+//             questionIndex++;
+//             clickedAnswer(event);
+//         })
+//         answerButtons.appendChild(newAnswerButtons);
+//     });
+// }
+// 
+// function clickedAnswer(event) {
+//     var button = event.target;
+//     if  (button.matches("button")) {
+//         var getAttribute = button.getAttribute("answer")
+//         if (getAttribute === "correct") {
+//             displayCorrect.classList.remove("hide");
+//             displayWrong.classList.add("hide");
+//         } else {
+//             displayWrong.classList.remove("hide");
+//             displayCorrect.classList.add("hide");
+//             // 10 seconds taken off if answer was wrong
+//             secondsLeft = secondsLeft - 10;
+//         }
+//     }
+//     selectNextQuestion();
+// };
+// 
 // var questionsArray = [
 //     {
 //         question: "What colour is the sky?",
