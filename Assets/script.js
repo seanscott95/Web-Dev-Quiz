@@ -28,9 +28,8 @@ var secondsLeft = 60;
 
 
 
-// Event listeners
+// The event listener and function to start the game once the start button is clicked
 startButton.addEventListener("click", startGame);
-
 
 function startGame() {
     setTime();
@@ -38,29 +37,31 @@ function startGame() {
     mixQuestions = questionsArray.sort(() => Math.random() -.5);
     questionIndex = 0;
     questionContainer.classList.remove("hide");
-    
     selectNextQuestion();
-
-
 }
 
+// Selects next question from the question array
 function selectNextQuestion() {
     refreshAnswers();
     displayQuestion(mixQuestions[questionIndex]);
 }
 
+// Removes answer already shown
 function refreshAnswers() {
     while(answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild)
     }
 }
 
+// This adisplays each question and answer to their respective elements - question div and answer buttons
 function displayQuestion(x) {
     questionDiv.innerText = x.question;
     x.answers.forEach(answers => {
+        // create new buttons to apply answer text too
         var newAnswerButtons = document.createElement("button");
         newAnswerButtons.innerText = answers.text;
         newAnswerButtons.classList.add("btn");
+        // sets appropiate attribute for correct/wrong answer
         if (answers.correct) {
             newAnswerButtons.setAttribute("answer", "correct")
         } else {
@@ -74,6 +75,7 @@ function displayQuestion(x) {
     });
 }
 
+// When an answer button is clicked this checks the attribute and displays appropiate correct/wrong div
 function clickedAnswer(event) {
     var button = event.target;
     if  (button.matches("button")) {
@@ -84,13 +86,16 @@ function clickedAnswer(event) {
         } else {
             displayWrong.classList.remove("hide");
             displayCorrect.classList.add("hide");
+            // 10 seconds taken off in answer was wrong
             secondsLeft = secondsLeft - 10;
         }
     }
     if (mixQuestions.length > questionIndex.length +1) {      //is this the problem for not going to next q?
-        selectNextQuestion();
+        selectNextQuestion();                                 // or refreshAnswers() - line 50?
     }
 }
+
+// Array of different questions to be cycled through
 var questionsArray = [
     {
         question: "What colour is the sky?",
