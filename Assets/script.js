@@ -1,20 +1,3 @@
-// start button click starts game
-// questions appear
-// timer starts
-// if answer is correct show correct else show wrong
-// if answer is wrong penalise 10s
-// go to next question
-// repeat for all questions
-// if either all questions answered or if timer runs out end game and go to form to input score
-// after input go to highscores
-// show highscores if high enough time left
-// have play again button
-
-//TODO LIST:
-// set up last question button to go to score input
-
-
-
 // Linking buttons and containers to variables to use in js
 var startButton = document.querySelector("#start-btn");
 var openingContainer = document.querySelector(".opening-container");
@@ -112,39 +95,39 @@ function clickedAnswer(event) {
 // Array of different questions to be cycled through
 var questionsArray = [
     {
-        question: "What colour is the sky?",
+        question: "The condition in an if/else statement is enclosed witin _______",
         answers: [
-            {text: "Blue", correct: true},
-            {text: "Orange", correct: false},
-            {text: "Purple", correct: false},
-            {text: "Yellow", correct: false}
+            {text: "Parenthesis", correct: true},
+            {text: "Quotes", correct: false},
+            {text: "Curly brackets", correct: false},
+            {text: "Square brackets", correct: false}
         ]
     },
     {
-        question: "What grows on apple trees?",
+        question: "Arrays in JavaScript can be used to store _______",
         answers: [
-            {text: "Mandarins", correct: false},
-            {text: "Pears", correct: false},
-            {text: "Apples", correct: true},
-            {text: "Mushrooms", correct: false}
+            {text: "Numbers and strings", correct: false},
+            {text: "Other arrays", correct: false},
+            {text: "Booleans", correct: true},
+            {text: "All of the above", correct: false}
         ]
     },
     {
-        question: "_________, boil 'em, mash 'em, stick 'em in a stew!",
+        question: "String values must be enclosed within ______ when being asssigned to variables",
         answers: [
-            {text: "iPhone's", correct: false},
-            {text: "Eraser's", correct: false},
-            {text: "Metal's", correct: false},
-            {text: "PO-TA-TOES", correct: true}
+            {text: "Commas", correct: false},
+            {text: "Parenthesis", correct: false},
+            {text: "Curly brackets", correct: false},
+            {text: "Quotes", correct: true}
         ]
     },
     {
-        question: "What is the circumference of the Earth?",
+        question: "Commonly used datatypes DO NOT include:",
         answers: [
-            {text: "4.739M km", correct: false},
-            {text: "40,075 km", correct: true},
-            {text: "21,344 km", correct: false},
-            {text: "10,921 km", correct: false}
+            {text: "Strings", correct: false},
+            {text: "Alerts", correct: true},
+            {text: "Booleans", correct: false},
+            {text: "Numbers", correct: false}
         ]
     }
 ]
