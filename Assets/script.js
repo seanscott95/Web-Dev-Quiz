@@ -32,30 +32,32 @@ var clearHighscoresButton = document.querySelector(".clear-highscores");
 var displayResult = document.querySelector(".result");
 var inputScoreContainer = document.querySelector(".input-score-container");
 var highscoreContainer = document.querySelector(".highscore-container");
+var viewHighscores = document.querySelector("#view-highscores");
 
 // Other variables
 var mixQuestions;
 var questionIndex;
-var secondsLeft = 60; //change back to 60    
+var secondsLeft = 60;
+var highScores = JSON.parse(localStorage.getItem("highscore")) || [];
 
 
 
 // The event listener and function to start the game once the start button is clicked
 startButton.addEventListener("click", startGame);
 
-function startGame() {
-    setTime();
+// Starts timer and goes to questions container 
+function startGame() {    
     openingContainer.classList.add("hide");
+    //sorts out questions randomly
     mixQuestions = questionsArray.sort(() => Math.random() -.5);
     questionIndex = 0;
     questionContainer.classList.remove("hide");
-    selectNextQuestion();
+    setTime();
 }
 
 // Selects next question from the question array if there is one
-// 
 function selectNextQuestion() {
-    if (questionIndex === mixQuestions.length) {      //(mixQuestions.length -1)
+    if (questionIndex === mixQuestions.length) {
         endGame();
     } else {
         refreshAnswers();
@@ -152,7 +154,6 @@ var questionsArray = [
 ]
 
 // Timer countdown from 60 seconds
-
 function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
@@ -163,6 +164,7 @@ function setTime() {
             endGame();
         }
     }, 1000);
+    selectNextQuestion();
 }
 
 // Goes to input initials page and shows score
@@ -179,9 +181,7 @@ function endGame() {
     })
 }
 
-
-var highScores = JSON.parse(localStorage.getItem("highscore")) || [];
-
+// 
 function renderHighscores() {
     var score = {
         score: secondsLeft,
@@ -198,9 +198,19 @@ function renderHighscores() {
     localStorage.setItem("highscore", JSON.stringify(highScores));
 }
 
-
-
-
+viewHighscores.addEventListener("click", () => {
+    openingContainer.classList.add("hide");
+    questionContainer.classList.add("hide");
+    inputScoreContainer.classList.add("hide");
+    highscoreContainer.classList.remove("hide");
+    highScores.sort((a,b) => b.score - a.score);
+    
+    orderedListItems.innerHTML = highScores.map(eachHighscore => {
+        return "<li>" + eachHighscore.name + " - " + eachHighscore.score;
+    }).join("");
+    
+    localStorage.setItem("highscore", JSON.stringify(highScores));
+});
 
 // Reloads webpage which leads back to the start
 goBackButton.addEventListener("click", () => {
@@ -213,198 +223,3 @@ clearHighscoresButton.addEventListener("click", () => {
     orderedListItems.removeChild(orderedListItems.firstChild);
     localStorage.clear();
 })
-
-// for (i=0; i < localStorage.length; i++) {
-//    if (localStorage.key(i).indexOf("highscore") !== -1) {
-
-
-
-//   eachHighscore = document.createElement("li");
-//   eachHighscore.innerText = highScores.score + " - " + highScores.name;
-//   orderedListItems.appendChild(eachHighscore);
-
-
-// function displayQuestion(x) {
-//     questionDiv.innerText = x.question;
-//     x.answers.forEach(answers => {
-//         // Creates new buttons to apply answer text too
-//         var newAnswerButtons = document.createElement("button");
-//         newAnswerButtons.innerText = answers.text;
-//         newAnswerButtons.classList.add("btn");
-//         // Sets appropiate attribute for correct/wrong answer
-//         if (answers.correct) {
-//             newAnswerButtons.setAttribute("answer", "correct")
-//         } else {
-//             newAnswerButtons.setAttribute("answer", "wrong")
-//         }
-//         newAnswerButtons.addEventListener("click", (event) => {
-//             questionIndex++;
-//             clickedAnswer(event);
-//         })
-//         answerButtons.appendChild(newAnswerButtons);
-//     });
-// }
-// 
-// function clickedAnswer(event) {
-//     var button = event.target;
-//     if  (button.matches("button")) {
-//         var getAttribute = button.getAttribute("answer")
-//         if (getAttribute === "correct") {
-//             displayCorrect.classList.remove("hide");
-//             displayWrong.classList.add("hide");
-//         } else {
-//             displayWrong.classList.remove("hide");
-//             displayCorrect.classList.add("hide");
-//             // 10 seconds taken off if answer was wrong
-//             secondsLeft = secondsLeft - 10;
-//         }
-//     }
-//     selectNextQuestion();
-// };
-// 
-// var questionsArray = [
-//     {
-//         question: "What colour is the sky?",
-//         answers: [
-//             {text: "Blue"},
-//             {text: "Orange"},
-//             {text: "Purple"},
-//             {text: "Yellow"}
-//         ]
-//     },
-//     {
-//         question: "What grows on apple trees?",
-//         answers: [
-//             {text: "Mandarins"},
-//             {text: "Pears"},
-//             {text: "Apples"},
-//             {text: "Mushrooms"}
-//         ]
-//     },
-//     {
-//         question: "_________, boil 'em, mash 'em, stick 'em in a stew!",
-//         answers: [
-//             {text: "iPhone's"},
-//             {text: "Eraser's"},
-//             {text: "Metal's"},
-//             {text: "PO-TA-TOES"}
-//         ]
-//     },
-//     {
-//         question: "What is the circumference of the Earth?",
-//         answers: [
-//             {text: "4.739M km", correct: false},
-//             {text: "40,075 km", correct: true},
-//             {text: "21,344 km", correct: false},
-//             {text: "10,921 km", correct: false}
-//         ]
-//     }
-// ]
-
-
-
-
-
-
-
-
-
-
-
-// function showAnswerComment(element, correct) {
-//     removeAnswerComment(element)
-//     if (correct) {
-//         element.classList.add("display-correct")
-//     } else {
-//         element.classList.add("display-wrong")
-//     }
-// }
-// 
-// function removeAnswerComment () {
-//     if (correct) {
-//         element.classList.remove("display-correct")
-//     } else {
-//         element.classList.remove("display-wrong")
-//     }
-// }
-
-
-
-// function chooseAnswer(event) {
-//     var answerButtonClicked = event.target
-//     var correct = answerButtonClicked.dataset.correct
-//     showAnswerComment(displayCorrect, correct) //******* 2229
-//     Array.from(answerButtons.children).forEach(button => {
-//         showAnswerComment(button, button.dataset.correct)
-//     })
-//     if (mixQuestions.length > questionIndex.length +1) {
-//         selectNextQuestion();
-//     }
-// }
-// 
-// function showAnswerComment(element, correct) {
-//     removeAnswerComment(element)
-//     if (correct) {
-//         displayCorrect.classList.remove("hide")
-//     } else {
-//         displayWrong.classList.remove("hide")
-//     }
-// }
-// 
-// function removeAnswerComment () {
-//     if (correct) {
-//         displayCorrect.classList.add("hide")
-//     } else {
-//         displayWrong.classList.add("hide")
-//     }
-// }
-// 
-
-
-
-// function displayQuestion(question) {
-//     questionDiv.innerText = question.question;
-//     question.answers.forEach(answer => {
-//         const newAnswerButtons = document.createElement("button");
-//         newAnswerButtons.innerText = answer.text;
-//         newAnswerButtons.classList.add("btn");
-//         if (answer.correct) {
-//             newAnswerButtons.dataset.correct = answer.correct;
-//         }
-//         newAnswerButtons.addEventListener("click", () => {
-//             questionIndex++;
-//             clickedAnswer();
-//         })
-//         answerButtons.appendChild(newAnswerButtons);
-//     });
-// }
-// 
-
-
-//
-// function clickedAnswer(event) {
-//     var answerButtonClicked = event.target //First error .target, undefined?, wrong type?
-//     const correct = answerButtonClicked. // Second error undefined  reading dataset, 
-//     showAnswerComment(displayCorrectWrong, correct) 
-//     Array.from(answerButtons.children).forEach(button => {
-//         showAnswerComment(button, button.dataset.correct)
-//     })
-//     if (mixQuestions.length > questionIndex.length +1) {
-//         selectNextQuestion();
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
