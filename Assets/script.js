@@ -113,7 +113,7 @@ var questionsArray = [
         ]
     },
     {
-        question: "String values must be enclosed within ______ when being asssigned to variables:",
+        question: "String values must be enclosed within ______ when being assigned to variables:",
         answers: [
             {text: "Commas", correct: false},
             {text: "Parenthesis", correct: false},
