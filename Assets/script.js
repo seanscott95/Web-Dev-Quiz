@@ -95,7 +95,7 @@ function clickedAnswer(event) {
 // Array of different questions to be cycled through
 var questionsArray = [
     {
-        question: "The condition in an if/else statement is enclosed witin _______:",
+        question: "The condition in an if / else statement is enclosed within _______:",
         answers: [
             {text: "Parenthesis", correct: true},
             {text: "Quotes", correct: false},
