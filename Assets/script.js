@@ -55,7 +55,7 @@ function startGame() {
 // Selects next question from the question array if there is one
 // 
 function selectNextQuestion() {
-    if (questionIndex === (mixQuestions.length -1)) {
+    if (questionIndex === mixQuestions.length) {      //(mixQuestions.length -1)
         endGame();
     } else {
         refreshAnswers();
