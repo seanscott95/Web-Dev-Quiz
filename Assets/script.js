@@ -95,7 +95,7 @@ function clickedAnswer(event) {
 // Array of different questions to be cycled through
 var questionsArray = [
     {
-        question: "The condition in an if/else statement is enclosed witin _______",
+        question: "The condition in an if/else statement is enclosed witin _______:",
         answers: [
             {text: "Parenthesis", correct: true},
             {text: "Quotes", correct: false},
@@ -104,7 +104,7 @@ var questionsArray = [
         ]
     },
     {
-        question: "Arrays in JavaScript can be used to store _______",
+        question: "Arrays in JavaScript can be used to store _______:",
         answers: [
             {text: "Numbers and strings", correct: false},
             {text: "Other arrays", correct: false},
@@ -113,7 +113,7 @@ var questionsArray = [
         ]
     },
     {
-        question: "String values must be enclosed within ______ when being asssigned to variables",
+        question: "String values must be enclosed within ______ when being asssigned to variables:",
         answers: [
             {text: "Commas", correct: false},
             {text: "Parenthesis", correct: false},
