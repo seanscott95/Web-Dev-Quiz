@@ -11,10 +11,7 @@
 // have play again button
 
 //TODO LIST:
-// fix timer that goes into neg
 // set up last question button to go to score input
-// set up text on score input page for your final score + secondsLeft
-// set up input button to go to highscore page and input score to ol that orders higher times above lower ones
 
 
 
@@ -39,8 +36,7 @@ var highscoreContainer = document.querySelector(".highscore-container");
 // Other variables
 var mixQuestions;
 var questionIndex;
-var secondsLeft = 1; //change back to 60
-var maxHighscoreList = 10;
+var secondsLeft = 1; //change back to 60    
 
 
 
@@ -56,8 +52,8 @@ function startGame() {
     selectNextQuestion();
 }
 
-// Selects next question from the question array
-// untested
+// Selects next question from the question array if there is one
+// 
 function selectNextQuestion() {
     if (mixQuestions.length === 0) {
         endGame();
@@ -197,9 +193,7 @@ function renderHighscores() {
     
     orderedListItems.innerHTML = highScores.map(eachHighscore => {
         return "<li>" + eachHighscore.name + " - " + eachHighscore.score;
-    }
-    ).join("");
-
+    }).join("");
     
     localStorage.setItem("highscore", JSON.stringify(highScores));
 }
