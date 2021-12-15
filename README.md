@@ -13,11 +13,11 @@ There is a go back button at the highscores page that will take you back to the 
 You can also see the highscores list from any part in the quiz by clicking on the View Highscores text in the top left corner.
 
 Below is some photos of my quiz:
-![alt-text] ()
-![alt-text] ()
-![alt-text] ()
-![alt-text] ()
-![alt-text] ()
-![alt-text] ()
+![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-1.png?raw=true)
+![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-2.png?raw=true)
+![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-3.png?raw=true)
+![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-4.png?raw=true)
+![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-5.png?raw=true)
+![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-6.png?raw=true)
 
-Link: 
+Link: https://seanscott95.github.io/Week-04-Homework-Quiz/
