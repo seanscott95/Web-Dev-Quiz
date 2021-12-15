@@ -36,7 +36,7 @@ var highscoreContainer = document.querySelector(".highscore-container");
 // Other variables
 var mixQuestions;
 var questionIndex;
-var secondsLeft = 1; //change back to 60    
+var secondsLeft = 60; //change back to 60    
 
 
 
@@ -55,11 +55,11 @@ function startGame() {
 // Selects next question from the question array if there is one
 // 
 function selectNextQuestion() {
-    if (mixQuestions.length === 0) {
+    if (questionIndex === (mixQuestions.length -1)) {
         endGame();
     } else {
         refreshAnswers();
-        displayQuestion();
+        displayQuestion(mixQuestions[questionIndex]);
     }
 }
 
