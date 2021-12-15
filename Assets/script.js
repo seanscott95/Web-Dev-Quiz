@@ -15,8 +15,7 @@
 // set up last question button to go to score input
 // set up text on score input page for your final score + secondsLeft
 // set up input button to go to highscore page and input score to ol that orders higher times above lower ones
-// have clear scores button clear scores
-// have go back button to go back to start page
+
 
 
 // Linking buttons and containers to variables to use in js
@@ -40,7 +39,7 @@ var highscoreContainer = document.querySelector(".highscore-container");
 // Other variables
 var mixQuestions;
 var questionIndex;
-var secondsLeft = 60;
+var secondsLeft = 1; //change back to 60
 
 
 
@@ -57,15 +56,20 @@ function startGame() {
 }
 
 // Selects next question from the question array
+// untested
 function selectNextQuestion() {
-    refreshAnswers();
-    inputHighscore();
+    if (mixQuestions.length === 0) {
+        endGame();
+    } else {
+        refreshAnswers();
+        displayQuestion();
+    }
 }
 
 // Removes orginal answer buttons
 function refreshAnswers() {
     while(answerButtons.firstChild) {
-        answerButtons.removeChild(answerButtons.firstChild)
+        answerButtons.removeChild(answerButtons.firstChild);
     }
 }
 
@@ -79,9 +83,9 @@ function displayQuestion(x) {
         newAnswerButtons.classList.add("btn");
         // Sets appropiate attribute for correct/wrong answer
         if (answers.correct) {
-            newAnswerButtons.setAttribute("answer", "correct")
+            newAnswerButtons.setAttribute("answer", "correct");
         } else {
-            newAnswerButtons.setAttribute("answer", "wrong")
+            newAnswerButtons.setAttribute("answer", "wrong");
         }
         newAnswerButtons.addEventListener("click", (event) => {
             questionIndex++;
@@ -106,6 +110,7 @@ function clickedAnswer(event) {
             secondsLeft = secondsLeft - 10;
         }
     }
+    // if // reaches last index then stop, increasing here or nextqfun end game
     selectNextQuestion();
 };
 
@@ -158,24 +163,20 @@ function setTime() {
         
         if (secondsLeft === 0) {            // if (secondsLeft === 0 || mixQuestions is out???)
             clearInterval(timerInterval);
-            inputHighscore();
+            endGame();
         }
     }, 1000);
 }
 
-// untested
-function inputHighscore() {
-    if (mixQuestions.length === 0) {
-        questionContainer.classList.add("hide");
-        inputScoreContainer.classList.remove("hide");
-    } else {
-        displayQuestion(mixQuestions[questionIndex]);
-    }
+// Goes to input initials page and shows score
+function endGame() {
+    questionContainer.classList.add("hide");
+    inputScoreContainer.classList.remove("hide");
     displayResult.innerText = "Your score was " + secondsLeft;
 
     submitInitialsButton.addEventListener("click", () => {
         var newScore = document.createElement("li");
-        newScore.innerText = initialsInput + " - " + secondsLeft;
+        newScore.innerText = inputInitials.value + " - " + secondsLeft;
         orderedListItems.appendChild(newScore);
         inputScoreContainer.classList.add("hide");
         highscoreContainer.classList.remove("hide");
