@@ -187,26 +187,25 @@ function endGame() {
 var highScores = JSON.parse(localStorage.getItem("highscore")) || [];
 
 function renderHighscores() {
-    var recentScore = document.createElement("li");
-        recentScore.innerText = '"' + inputInitials.value + " - " + secondsLeft + '"';
-        orderedListItems.appendChild(recentScore);
-    
     var score = {
         score: secondsLeft,
         name: inputInitials.value
     }
     highScores.push(score);
     // if b is higher than a than put b
-    highScores.sort((a,b) => b.score.score - a.score.score);
-    highScores.splice(10);
+    highScores.sort((a,b) => b.score - a.score);
+    
+    orderedListItems.innerHTML = highScores.map(eachHighscore => {
+        return "<li>" + eachHighscore.name + " - " + eachHighscore.score;
+    }
+    ).join("");
+
     
     localStorage.setItem("highscore", JSON.stringify(highScores));
 }
 
-orderedListItems.innerHTML = highScores
-    .map(eachHighscore => {
-        return "<li>" + JSON.stringify(eachHighscore.name + " - " + eachHighscore.score) + "<li>";
-    }).join("");
+
+
 
 
 // Reloads webpage which leads back to the start
