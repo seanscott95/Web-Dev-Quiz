@@ -57,12 +57,8 @@ function startGame() {
 
 // Selects next question from the question array if there is one
 function selectNextQuestion() {
-    if (questionIndex === mixQuestions.length) {
-        endGame();
-    } else {
-        refreshAnswers();
-        displayQuestion(mixQuestions[questionIndex]);
-    }
+    refreshAnswers();
+    displayQuestion(mixQuestions[questionIndex]);
 }
 
 // Removes orginal answer buttons
@@ -159,7 +155,7 @@ function setTime() {
         secondsLeft--;
         timer.textContent = secondsLeft;
         
-        if (secondsLeft === 0) {            // if (secondsLeft === 0 || mixQuestions is out???)
+        if (secondsLeft === 0 || questionIndex === mixQuestions.length) {            // if (secondsLeft === 0 || mixQuestions is out???)
             clearInterval(timerInterval);
             endGame();
         }
