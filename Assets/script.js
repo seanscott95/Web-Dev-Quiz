@@ -40,6 +40,7 @@ var highscoreContainer = document.querySelector(".highscore-container");
 var mixQuestions;
 var questionIndex;
 var secondsLeft = 1; //change back to 60
+var maxHighscoreList = 10;
 
 
 
@@ -175,26 +176,60 @@ function endGame() {
     displayResult.innerText = "Your score was " + secondsLeft;
 
     submitInitialsButton.addEventListener("click", () => {
-        var newScore = document.createElement("li");
-        newScore.innerText = inputInitials.value + " - " + secondsLeft;
-        orderedListItems.appendChild(newScore);
+        renderHighscores();
         inputScoreContainer.classList.add("hide");
         highscoreContainer.classList.remove("hide");
+        
     })
 }
 
-// Event listeners for the goback and clear highscores buttons
 
+var highScores = JSON.parse(localStorage.getItem("highscore")) || [];
+
+function renderHighscores() {
+    var recentScore = document.createElement("li");
+        recentScore.innerText = '"' + inputInitials.value + " - " + secondsLeft + '"';
+        orderedListItems.appendChild(recentScore);
+    
+    var score = {
+        score: secondsLeft,
+        name: inputInitials.value
+    }
+    highScores.push(score);
+    // if b is higher than a than put b
+    highScores.sort((a,b) => b.score.score - a.score.score);
+    highScores.splice(10);
+    
+    localStorage.setItem("highscore", JSON.stringify(highScores));
+}
+
+orderedListItems.innerHTML = highScores
+    .map(eachHighscore => {
+        return "<li>" + JSON.stringify(eachHighscore.name + " - " + eachHighscore.score) + "<li>";
+    }).join("");
+
+
+// Reloads webpage which leads back to the start
 goBackButton.addEventListener("click", () => {
-    // untested
     location.reload();
 });
 
-// untested
+// Refreshs page clearing highscores also clearing localStorage of highscores
 clearHighscoresButton.addEventListener("click", () => {
     while (orderedListItems.firstChild)
     orderedListItems.removeChild(orderedListItems.firstChild);
+    localStorage.clear();
 })
+
+// for (i=0; i < localStorage.length; i++) {
+//    if (localStorage.key(i).indexOf("highscore") !== -1) {
+
+
+
+//   eachHighscore = document.createElement("li");
+//   eachHighscore.innerText = highScores.score + " - " + highScores.name;
+//   orderedListItems.appendChild(eachHighscore);
+
 
 // function displayQuestion(x) {
 //     questionDiv.innerText = x.question;
