@@ -1,6 +1,6 @@
-# 04 Web API's: Quiz
+# Web API's Quiz
 
-This code was created so that as a coding boot camp student I can take a timed quiz on the fundamentals of JavaScript that stores high scores so that I can gauge my progress compared to my peers.
+This was created to further imporve my knowledge about the fundamentals of JavaScript that stores high scores
 
 This quiz consists of 4 questions and a timer that will lose 10 seconds for each wrong quiz.
 You start by pressing the start button which starts the timer and displays the first question.
@@ -13,11 +13,11 @@ There is a go back button at the highscores page that will take you back to the 
 You can also see the highscores list from any part in the quiz by clicking on the View Highscores text in the top left corner.
 
 Below is some photos of my quiz:
-![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-1.png?raw=true)
-![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-2.png?raw=true)
-![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-3.png?raw=true)
-![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-4.png?raw=true)
-![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-5.png?raw=true)
-![alt-text] (https://github.com/seanscott95/Week-04-Homework-Quiz/blob/main/Assets/images/quiz-6.png?raw=true)
+![Quiz1] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-1.png?raw=true)
+![Quiz2] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-2.png?raw=true)
+![Quiz3] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-3.png?raw=true)
+![Quiz4] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-4.png?raw=true)
+![Quiz5] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-5.png?raw=true)
+![Quiz6] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-6.png?raw=true)
 
-Link: https://seanscott95.github.io/Week-04-Homework-Quiz/
+Link: https://seanscott95.github.io/Web-Dev-Quiz/
