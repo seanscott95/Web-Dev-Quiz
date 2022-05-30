@@ -13,11 +13,18 @@ There is a go back button at the highscores page that will take you back to the 
 You can also see the highscores list from any part in the quiz by clicking on the View Highscores text in the top left corner.
 
 Below is some photos of my quiz:
-![Quiz1] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-1.png?raw=true)
-![Quiz2] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-2.png?raw=true)
-![Quiz3] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-3.png?raw=true)
-![Quiz4] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-4.png?raw=true)
-![Quiz5] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-5.png?raw=true)
-![Quiz6] (https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-6.png?raw=true)
+
+![Quiz1](https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-1.png?raw=true)
+
+![Quiz2](https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-2.png?raw=true)
+
+![Quiz3](https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-3.png?raw=true)
+
+![Quiz4](https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-4.png?raw=true)
+
+![Quiz5](https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-5.png?raw=true)
+
+![Quiz6](https://github.com/seanscott95/Web-Dev-Quiz/blob/main/Assets/images/quiz-6.png?raw=true)
+
 
 Link: https://seanscott95.github.io/Web-Dev-Quiz/
